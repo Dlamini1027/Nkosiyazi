@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Will You Be My Valentine?</title>
+        <style>
+            body{
+                font-family: sans-serif;
+                text-align: center;
+                padding: 50px;
+                background-color: dimgray;
+                background-size: cover;
+                background-position: center;
+                color: rgba(10, 214, 241, 0.956);
+                
+               
+            }
+            button{
+                font-size: 18px;
+                padding: 10px 20px;
+                margin: 10px;
+                cursor: pointer;
+               
+            }
+            img {
+                max-width: 50%;
+                height: auto;
+                margin-top: auto;
+                transition: transform 0.5s ease-in-out;
+                background-color: rgb(252, 251, 251);
+               
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Will You Hold Me Down On Valentine Day And Be My Valentine ?</h1>
+        <button onclick="answerYES()"><img src="" alt="YES"></button>
+        <button onclick="answerNO()"><img src="" alt="NO"></button>
+
+        <p id="response"></p>
+
+        <img id="Valentine" src="../Desktop/valentine-39.webp" alt="valentine-39">
+        
+        <script>
+
+            function answerNO() {
+                document.getElementById("response").innerHTML = "Erre! Take Your Time and Try Again.";
+                animateImage("file:../Desktop/broken-heart-6571108_1280.webp");
+            }
+
+            function animateImage(imagePath) {
+                var image = document.getElementById("Valentine");
+                image.src = imagePath;
+                image.style.transform = "rotate(360deg)"
+                
+            }
+            
+        </script>
+        <script>
+                        function answerYES() {
+                document.getElementById("response").innerHTML = "YES, I'd Love To Hold You Dawn On Valentine Day and Be Your Valentine!";
+                animateImage("../Desktop/pic1.jpg");
+                
+                        }
+                        
+                        
+        </script>
+    </body>
+</html>
+                
+        
