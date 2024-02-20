@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url(../Desktop/sun.jpg);
+    background-size: cover;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task...">
+<input type="time" id="taskTime">
+<button onclick="addTask()">Add Task</button>
+
+<ul id="taskList">
+  
+</ul>
+
+<script>
+function addTask() {
+  var input = document.getElementById("taskInput").value;
+  var time = document.getElementById("taskTime").value;
+  
+  if (input === '') {
+    alert("Please enter a task!");
+    return;
+  }
+  
+  var ul = document.getElementById("taskList");
+  var li = document.createElement("li");
+  var text = document.createTextNode(input + " - " + time);
+  
+  li.appendChild(text);
+  ul.appendChild(li);
+  
+  var btn = document.createElement("button");
+  btn.innerHTML = "Done";
+  btn.onclick = function() {
+    li.style.textDecoration = "line-through";
+    btn.style.display = "none";
+  };
+  li.appendChild(btn);
+  
+  document.getElementById("taskInput").value = '';
+  document.getElementById("taskTime").value = '';
+}
+</script>
+
+</body>
+</html>
