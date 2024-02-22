@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <label for="firstNumber">First Number:</label>
+    <input type="number" id="firstNumber">
+    <label for="oparetar">Oparetar:</label>
+    <select id="oparetar">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <label for="secondNumber">Second Number:</label>
+    <input type="number" id="secondNumber">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            var firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            var oparetar = document.getElementById('oparetar').value;
+            var secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            var result;
+
+            switch (oparetar) {
+                case '+':
+                    result = firstNumber + secondNumber;
+                    break;
+                case '-':
+                    result = firstNumber - secondNumber;
+                    break;
+                case '*':
+                    result = firstNumber * secondNumber;
+                    break;
+                case '/':
+                    if (secondNumber === 0) {
+                        result = "Error: Cannot divide by zero";
+                    } else {
+                        result = firstNumber / secondNumber;
+                    }
+                    break;
+                default:
+                    result = "Error: Invalid oparetar";
+                    
+            }
+            var resultParagraph = document.getElementById('result');
+            var currentContent = resultParagraph.innerText;
+            var newContent = "Result: " + result;
+
+            if (currentContent.trim() !== "") {
+                // if there's existing content, add a line break before appending the new result
+                resultParagraph.innerText = currentContent + "\n" + newContent;
+            }
+
+            else {
+                // if there's no existing content, simply set the new result
+              resultParagraph.innerText = newContent;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
