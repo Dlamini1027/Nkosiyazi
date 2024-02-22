@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url(../Desktop/matrix.jpg);
+        color: rgb(0, 255, 247);
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: center;
+        color: rgb(0, 255, 234);
+    }
+</style>
+</head>
+<body>
+    <h2>ID Calculator</h2>
+    <label for="idNumber">Enter ID Number:</label>
+    <input type="text" id="idNumber">
+    <button onclick="calculateAgeAndGender()">Submit</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function calculateAgeAndGender() {
+            var idNumber = document.getElementById('idNumber').value;
+            var birthYear = idNumber.substring(0, 2);
+            var currentYear = new Date().getFullYear();
+            var prefix = parseInt(birthYear) > currentYear % 100 ? "19" : "20";
+            var fullYear = prefix + birthYear;
+            var age = currentYear - fullYear;
+
+            var genderCode = idNumber.charAt(6);
+            var gender = parseInt(genderCode) < 5 ? "Female" : "Male";
+
+            var resultParagraph = document.getElementById('result');
+            var currentContent = resultParagraph.innerText;
+            var newContent = "Age: " + age + ", Gender: " + gender;
+            
+            if (currentContent.trim() !== "") {
+                // if there's existing content, add a line break appending yhe new result
+                resultParagraph.innerText = currentContent +"\n" + newContent;
+            }
+            else {
+                // if there's no existing content, simply set the new result
+                resultParagraph.innerText = newContent;
+            }
+        }
+    </script>
+</body>
+</html>
